@@ -1,0 +1,28 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgeboholteanu/Team-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgeboholteanu/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/georgeboholteanu/Team-Profile-Generator#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "inquirer": "^9.1.4",
+    "jest": "^29.4.3",
+    "path": "^0.12.7"
+  }
+}
