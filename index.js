@@ -26,8 +26,7 @@ const init = () => {
         {            
             type: 'input',
             message: "Team manager name",
-            name: 'managerName',
-            suggestions: ['Oliver', 'Luna', 'Charlie', 'Bella', 'Max', 'Lucy'],            
+            name: 'managerName',          
         },
         {            
             type: 'input',
@@ -37,7 +36,14 @@ const init = () => {
         {            
             type: 'input',
             message: "Team manager email",
-            name: 'managerEmail'
+            name: 'managerEmail',
+            // validate: (answer) => {
+            //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            //     if(!emailRegex.test(answer)) {
+            //         return "You have to provide a valid email address!"
+            //     }
+            //     return true
+            // },
         },
         {            
             type: 'input',
@@ -48,7 +54,7 @@ const init = () => {
             type: 'list',
             message: "Want tot add someone else?",
             name: 'addTeamMember',
-            choices: ['Engineer', 'Intern', 'I don\'t want to add anyone'],
+            choices: [new inquirer.Separator(), 'Engineer', 'Intern', 'I don\'t want to add anyone'], 
         },       
         
     ])
@@ -69,19 +75,35 @@ const init = () => {
                 {
                     type: 'input',
                     message: "Engineer email",
-                    name: 'engineerEmail'
+                    name: 'engineerEmail',
+                    // validate: (answer) => {
+                    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                    //     if(!emailRegex.test(answer)) {
+                    //         return "You have to provide a valid email address!"
+                    //     }
+                    //     return true
+                    // },
                 },
                 {
                     type: 'input',
                     message: "Engineer github username",
-                    name: 'engineerGithub'
+                    name: 'engineerGithub',
+                    // validate: (answer) => {
+                    //     const emailRegex = /^[^\s@]+@github.com/
+                    //     if(!emailRegex.test(answer)) {
+                    //         return "You have to provide a valid email address!"
+                    //     }
+                    //     return true
+                    // },
                 }
             ])
             .then((answers2) => {
                 fullResponse.push(new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerNo))
                 fullResponse.push(new Engineer(answers2.engineerName, answers2.engineerId, answers2.engineerEmail, answers2.engineerGithub));
-                // console.log(fullResponse);
-            })          
+                console.log(fullResponse);
+                writeToFile(fullResponse)
+            })  
+            .then(() => init())        
         } else if (answers.addTeamMember === 'Intern') {
             inquirer
             .prompt([
@@ -98,7 +120,14 @@ const init = () => {
                 {
                     type: 'input',
                     message: "Intern email",
-                    name: 'internEmail'
+                    name: 'internEmail',
+                    // validate: (answer) => {
+                    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                    //     if(!emailRegex.test(answer)) {
+                    //         return "You have to provide a valid email address!"
+                    //     }
+                    //     return true
+                    // },
                 },
                 {
                     type: 'input',
@@ -109,18 +138,17 @@ const init = () => {
             .then((answers2) => {
                 fullResponse.push(new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerNo))
                 fullResponse.push(new Intern(answers2.internName, answers2.internId, answers2.internSchool));
-                // console.log(fullResponse);
+                console.log(fullResponse);
+                writeToFile(fullResponse)
             })
 
         } else if (answers.addTeamMember === 'I don\'t want to add anyone') {
             console.log("I don't want to add anyone");
-        }      
-        
-    
+        }     
     })
     .then(() => {
-        // writeToFile(fullResponse)
-        console.log(fullResponse);
+        writeToFile(fullResponse)
+        // console.log(answers);
     })
     .catch((err) => console.error(err));
 }
