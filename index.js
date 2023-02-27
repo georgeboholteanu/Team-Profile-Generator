@@ -17,3 +17,48 @@ const writeToFile = team => {
     );
 };
 
+// render the questions for the user
+async function askQuestions() {
+    const categoryChoices = ['Manager', 'Engineer', 'Intern'];
+  
+    const { category } = await inquirer.prompt({
+      type: 'list',
+      name: 'category',
+      message: 'What type of employee do you want to add?',
+      choices: categoryChoices,
+    });
+  
+    let employee;
+    switch (category) {
+      case 'Manager':
+        employee = new Manager();
+        await employee.getDetails();
+        break;
+      case 'Engineer':
+        employee = new Engineer();
+        await employee.getDetails();
+        break;
+      case 'Intern':
+        employee = new Intern();
+        await employee.getDetails();
+        break;
+      default:
+        console.error(`Invalid category "${category}"`);
+        return;
+    }
+  
+    const employees = [employee];
+  
+    const { addAnother } = await inquirer.prompt({
+      type: 'confirm',
+      name: 'addAnother',
+      message: 'Add another employee?',
+    });
+  
+    if (addAnother) {
+      employees.push(...(await askQuestions()));
+    }
+  
+    return employees;
+  }
+  
