@@ -33,7 +33,7 @@ Inquirer v6.3.1 has been used for this time, which can be installed by running *
 
 ### **Usage**
 
-The application will be invoked by using the following command:  ***node.index.js***.
+The application will be invoked by using the following command:  ***node index.js***.
 
 All dependencies can be found in ***package.json***
 
@@ -59,7 +59,7 @@ Testing can be ran locally after a pull request has been made successfully and r
 
 ### **Questions**
 
-For any questions or feedback please ping me a message on **[Github](https://github.com/georgeboholteanu)** or send an email at <mailto:george.boholteanu@gmail.com>.
+For any questions or feedback please ping me a message on **[Github](https://github.com/georgeboholteanu)** or send an email at <george.boholteanu@gmail.com>.
 
 &nbsp;
 
