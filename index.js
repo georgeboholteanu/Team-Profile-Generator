@@ -28,6 +28,7 @@ async function askQuestions() {
         choices: categoryChoices,
     });
 
+    // create new team member based on category selected
     let employee;
     switch (category) {
         case 'Manager':
