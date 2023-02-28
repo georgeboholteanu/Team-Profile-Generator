@@ -65,7 +65,7 @@ async function askQuestions() {
 // initialize the application
 async function main() {
     const employees = await askQuestions();
-    console.log(employees);
+    writeToFile(employees);
 }
 
 main();
