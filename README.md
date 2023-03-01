@@ -1,7 +1,8 @@
 # Team-Profile-Generator
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Awesome](https://awesome.re/badge.svg)](https://github.com/georgeboholteanu)
 ![rating](https://img.shields.io/badge/rating-★★★★☆-brightgreen)
+
 
 Team-Profile-Generator App helps users generate their own team web page based on user input.
 &nbsp;
